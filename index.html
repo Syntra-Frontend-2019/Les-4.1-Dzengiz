@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Mee te nemen uit de colruyt</h1>
+
+    <ul id="list">
+
+    </ul>
+
+    <input type="text" id="product">
+
+    <button id="addButton" onclick="addItem()">Add</button>
+
+    <button id="removeButton" onclick="removeItem()">Remove</button>
+
+
+    <script>
+        // Fetch elements from the DOM
+        let list = document.getElementById("list");
+        let input = document.getElementById("product");
+
+        // Initialize the array
+        let shoppingList = ["waspoeder", "kip", "alcoholstift", "wittewijn"];
+
+        // Show the Array as is
+        showList();
+
+        // Function to add an item
+        function addItem() {
+            let itemToAdd = input.value;
+            shoppingList.push(itemToAdd);
+            showList()
+        }
+
+        // Function to remove an item
+        function removeItem() {
+            let itemToRemove = input.value;
+            let indexToRemove = shoppingList.indexOf(itemToRemove);
+            shoppingList.splice(indexToRemove, 1);
+            showList()
+        }
+
+        // Function to show or rerender the list
+        function showList() {
+            list.innerHTML = '<li>'+ shoppingList.join("<li>")+'';
+        }
+
+    </script>
+    
+</body>
+</html>
