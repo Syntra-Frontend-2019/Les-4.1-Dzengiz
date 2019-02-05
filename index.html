@@ -19,20 +19,21 @@
 
 
     <script>
-        // Fetch elements from the DOM
+        // Find elements in DOM
         let list = document.getElementById("list");
         let input = document.getElementById("product");
 
-        // Initialize the array
+        // Array initialization
         let shoppingList = ["waspoeder", "kip", "alcoholstift", "wittewijn"];
 
-        // Show the Array as is
+        // Show the array as a list of li's
         showList();
 
         // Function to add an item
         function addItem() {
             let itemToAdd = input.value;
             shoppingList.push(itemToAdd);
+
             showList()
         }
 
@@ -40,13 +41,20 @@
         function removeItem() {
             let itemToRemove = input.value;
             let indexToRemove = shoppingList.indexOf(itemToRemove);
-            shoppingList.splice(indexToRemove, 1);
+
+            // If the item is found, remove it
+            if(indexToRemove > -1) {
+                shoppingList.splice(indexToRemove, 1);
+            } else {
+                console.log("Item is not found")
+            }
+
             showList()
         }
 
-        // Function to show or rerender the list
-        function showList() {
-            list.innerHTML = '<li>'+ shoppingList.join("<li>")+'';
+        // Function to show the list as li's
+        function showList(){
+            list.innerHTML = '<li>'+ shoppingList.join("<li>");
         }
 
     </script>
